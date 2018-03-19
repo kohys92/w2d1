@@ -5,6 +5,23 @@ function getAndPrintHTML() {
     path: '/http-examples/step2.html'
   };
 
-  /* Add your code here */
+  var https = require("https");
+
+  var outputData = "";
+
+  https.get(requestOptions, function(response){
+      response.setEncoding('utf8');
+
+      response.on('data', function(data) {
+        console.log(data);
+      });
+
+      response.on('end', function(data){
+        outputData += data;
+        console.log(outputData);
+      });
+  });
 
 }
+
+getAndPrintHTML();
