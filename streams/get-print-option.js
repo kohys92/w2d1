@@ -7,11 +7,9 @@ var options = {
 
 function getAndPrintHTML (options) {
 
-  var requestOptions = options;
-
   var outputData = "";
 
-  https.get(requestOptions, function(response){
+  https.get(options, function(response){
     response.setEncoding('utf8');
 
     response.on('data', function(data) {
