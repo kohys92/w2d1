@@ -1,3 +1,6 @@
+var https = require("https");
+
+
 function getAndPrintHTML() {
 
   var requestOptions = {
@@ -5,21 +8,19 @@ function getAndPrintHTML() {
     path: '/http-examples/step2.html'
   };
 
-  var https = require("https");
 
   var outputData = "";
 
   https.get(requestOptions, function(response){
-      response.setEncoding('utf8');
+    response.setEncoding('utf8');
 
-      response.on('data', function(data) {
-        console.log(data);
-      });
+    response.on('data', function(data) {
+      console.log(data);
+    });
 
-      response.on('end', function(data){
-        outputData += data;
-        console.log(outputData);
-      });
+    response.on('end', function(){
+      console.log(outputData);
+    });
   });
 
 }
